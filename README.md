@@ -232,19 +232,17 @@ use https://github.com/khinds10/DeviceHub to setup a custom datahub for your dev
 
 `dht22Adjust = 0`
 
-
-
 ### Set pi user crontab 
 
 `$ crontab -e`
 
-`@reboot sleep 60 && python3 /home/khinds/time.py`
+`@reboot sleep 60 && python3 /home/pi/time.py`
 
-`*/5 * * * * python3 /home/khinds/date.py`
+`*/5 * * * * python3 /home/pi/date.py`
 
-`*/15 * * * * python3 /home/khinds/temp-check.py`
+`*/15 * * * * python3 /home/pi/temp-check.py`
 
-`*/5 * * * * python3 /home/khinds/temp.py`
+`*/5 * * * * python3 /home/pi/temp.py`
 
 ### Set root user crontab (this library requires root access)
 
@@ -257,3 +255,5 @@ Set "on reboot" to run the candle python script forever
 `@reboot python XXX`
 
 # Finished!
+
+![Finished](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/7.png)
