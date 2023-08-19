@@ -1,8 +1,7 @@
-# WeatherCandle - Weather and Temperature at a glance
+# Office Wall Multiclock - Temperature / 
 Using this magic candle, you can tell the current temperature and conditions outside instantly
 
-![Finished](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/main-image.png)
-
+![Finished](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/7.png)
 
 #### Flashing RaspberriPi Hard Disk / Install Required Software (Using Ubuntu Linux)
 
@@ -131,6 +130,26 @@ Add the following lines to have your raspberrypi automatically connect to your h
 **USB WIFI (if not a PiZero W)**
 
 ![USB WIFI (if not a PiZero W)](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/wifi.jpg)
+
+**7 Segment Display (x4)**
+
+![7 Segment Display (x4)](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/7segment.png)
+
+**DHT22**
+
+![DHT22](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/DHT22.png)
+
+**14 Segment Display (x4)**
+
+![14 Segment Display (x4)](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/alphanum.png)
+
+**7x14" Frame**
+
+![7x14" Frame](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/frame.png)
+
+**Semi-Transparent PlexiGlass**
+
+![Semi-Transparent PlexiGlass](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/glass.png)
 
 
 # Building the OfficeMultiClock
