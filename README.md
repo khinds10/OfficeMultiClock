@@ -154,9 +154,26 @@ Add the following lines to have your raspberrypi automatically connect to your h
 
 # Building the OfficeMultiClock
 
+## Solder Unique Display Jumpers
+*NOTE: All the I2C backpacks must be soldered on the back of each of the displays, the backpacks come with the display and must all be soldered on first.*
+
+For each of the I2C backpack displays you must solder the jumpers on the back in the **all the possible combinations** to have your RaspberriPI I2C interface to recognize each display with a **unique address**.  
+
+Leave the first display with no jumper soldered, the 2nd with the farthest right soldered, the 3rd with only the middle soldered and so on...  Eventually you'll have to solder jumpers in all the combinations of 2 at a time connected and the final display with all 3 jumpers soldered to be connected.
+
+*There's a total of 3 pins so you should have a total combination of 8 unique combinations.*
+
+![Solder Unique Display Jumpers](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/displays.jpg "Solder Unique Display Jumpers")
 
 ### Wiring the Components
 
+Each of the 14 segment alpha numeric displays needs to have a connection to the RaspberryPI GND, 5V and 3V pins.  The 7 segment display only needs connectivity to the GND and 5V pins.
+
+![Wiring Diagram](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/wiring-diagram.png "Wiring Diagram")
+
+I've used standard jumper wires to connect to all the pins on the display / RaspberryPI pins and grouped the common connections (all the GND wires, 5V wires) with a wirenut.
+
+For each display in the dashboard ALL of the D and C pins need to be connected to the SCL and SDA pins on the PI.
 
 ### Set pi user crontab 
 
