@@ -9,8 +9,8 @@ weatherAPIURL = 'https:// openweather API'
 deviceLoggerAPI = 'data logger URL'
 
 # search google to get the Latitude/Longitude for your home location
-latitude = 42.4152778
-longitude = -71.1569444
+latitude = 45
+longitude = -70
 
 # DHT22 temp calibration
 dht22Adjust = 0
