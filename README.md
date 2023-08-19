@@ -1,5 +1,5 @@
-# Office Wall Multiclock - Temperature / 
-Using this magic candle, you can tell the current temperature and conditions outside instantly
+# Office Wall Multiclock - Indoor/Outdoor Temp, Date, Local and International Timezone
+Office Wall clock with temperature, date time and additional international timezone.
 
 ![Finished](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/7.png)
 
@@ -83,6 +83,7 @@ Add the following lines to have your raspberrypi automatically connect to your h
 >But first you need to get the IP address it currently has.
 >
 >$ `ifconfig`
+>
 >*Look for "inet addr: 192.168.XXX.XXX" in the following command's output for your PI's IP Address*
 
 **Go to another machine and login to your raspberrypi via ssh**
@@ -95,13 +96,26 @@ Add the following lines to have your raspberrypi automatically connect to your h
 >
 >$ `sudo apt-get upgrade`
 >
->$ `sudo apt-get install memcached vim git python-smbus i2c-tools python-imaging python-smbus build-essential python-dev rpi.gpio python3 python3-pip python-memcache`
+>$ `sudo apt-get install vim git i2c-tools build-essential python-dev rpi.gpio python3 python3-pip python-setuptools python3-requests`
 
-**Update local timezone settings
+
+**Install DHT22 Python Library**
+
+>$ `git clone https://github.com/adafruit/Adafruit_Python_DHT.git`
+>
+>$ `cd Adafruit_Python_DHT`
+>
+>$ `sudo python2 setup.py install`
+
+**Install ht16k33 Python Library**
+
+>$ `sudo pip3 install adafruit-circuitpython-ht16k33`
+
+**Update local timezone settings**
 
 >$ `sudo dpkg-reconfigure tzdata`
 
-`select your timezone using the interface`
+>`select your timezone using the interface`
 
 **Setup the simple directory `l` command [optional]**
 
@@ -151,7 +165,6 @@ Add the following lines to have your raspberrypi automatically connect to your h
 
 ![Semi-Transparent PlexiGlass](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/glass.png)
 
-
 # Building the OfficeMultiClock
 
 ## Solder Unique Display Jumpers
@@ -175,11 +188,63 @@ I've used standard jumper wires to connect to all the pins on the display / Rasp
 
 For each display in the dashboard ALL of the D and C pins need to be connected to the SCL and SDA pins on the PI.
 
+### Assembly
+
+I've created a square frame of wood, painted black, glued to the back of the frame.
+
+![Frame](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/8.png "Frame")
+
+Place the tinted PlexiGlass in the frame, this will allow the wall mounted board with displays to be able to fit behind the glass.
+
+![Frame](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/9.png "Frame")
+
+Using small pieces of wood or 3D printed squares (in grey), attach them to a black board (that will mount on the wall).
+This will serve as a guide to attach (with screws) the displays evenly to display on the wall.
+
+![Guides](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/1.png "1.png")
+
+Mount all the components wired (including the RPi) with screws attached to the painted black back board.
+
+![Mount Components](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/5.png "5.png")
+
+Mount on wall (the black frame with plexglass will hang over the top of it)
+
+![Mount on wall](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/6.png "6.png")
+
+### Software Setup
+
+Create a copy of **settings-shadow.py** to **settings.py** and update your own values for your clock.
+
+Get Outside weather
+`weatherAPIURL = 'https:// openweather API'`
+
+`https://openweathermap.org/`
+
+account is required, the device will simply read from the default forecast returned from the API, it will also post it to the Datahub.
+
+**OPTIONAL DATAHUB**
+
+use https://github.com/khinds10/DeviceHub to setup a custom datahub for your device to post temps as time goes on.
+
+`deviceLoggerAPI = 'data logger URL'`
+
+**DHT Adjust is degress (in F)** to plus or minus in case your DHT22 is running hot or cold.
+
+`dht22Adjust = 0`
+
+
+
 ### Set pi user crontab 
 
 `$ crontab -e`
 
-`*/1 * * * * python /home/pi/OfficeMultiClock/XXX.py`
+`@reboot sleep 60 && python3 /home/khinds/time.py`
+
+`*/5 * * * * python3 /home/khinds/date.py`
+
+`*/15 * * * * python3 /home/khinds/temp-check.py`
+
+`*/5 * * * * python3 /home/khinds/temp.py`
 
 ### Set root user crontab (this library requires root access)
 
