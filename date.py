@@ -48,7 +48,7 @@ elif dateString.endswith('3') and not dateString.endswith('13'):
     suffix = 'rd'
 
 dateString = dateString.upper() + suffix
-dateString += now.strftime("%Y")
+dateString += now.strftime("    ")
 substrings = [dateString[i:i+4] for i in range(0, len(dateString), 4)]
 
 display1.print(substrings[0])
