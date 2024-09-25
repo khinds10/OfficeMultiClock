@@ -244,16 +244,6 @@ use https://github.com/khinds10/DeviceHub to setup a custom datahub for your dev
 
 `*/5 * * * * python3 /home/pi/temp.py`
 
-### Set root user crontab (this library requires root access)
-
-Set "on reboot" to run the candle python script forever
-
-`$ sudo su`
-
-`$ crontab -e`
-
-`@reboot python XXX`
-
 # Finished!
 
 ![Finished](https://raw.githubusercontent.com/khinds10/OfficeMultiClock/master/construction/7.png)
